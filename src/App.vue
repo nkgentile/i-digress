@@ -1,10 +1,31 @@
 <template>
   <div id="app">
+
+    <nav class="app-navigation-container">
+      <router-link
+        v-for="route in routes"
+        :to="route.path"
+      >
+        {{ route.name }}
+      </router-link>
+    </nav>
+
     <router-view
       class="app-content-container"
     />
   </div>
 </template>
+
+<script>
+export default {
+  name: 'app',
+  computed: {
+    routes(){
+      return this.$router.options.routes;
+    },
+  },
+};
+</script>
 
 <style lang="less">
   * {
