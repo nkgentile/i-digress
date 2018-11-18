@@ -1,38 +1,40 @@
 <template>
-  <main>
-    <figure class="trailer embed-responsive embed-responsive-16by9">
-      <VimeoPlayer
-        v-if="false"
-        class="embed-responsive-item"
-        ref="player"
-        :video-id="255316299"
-        :options="{
-          background: true,
-          byline: false,
-          portrait: false,
-          transparent: true,
-          title: false,
-        }"
-        @ready="$refs.player.pause()"
-      />
+  <main class="container">
+    <figure
+      class="background embed-responsive embed-responsive-fullscreen"
+      @click="$router.push('watch')"
+    >
       <img
         class="embed-responsive-item"
         :src="poster"
       />
+    </figure>
+    <section class="content">
       <FaLayers
         class="fa-4x"
         fixed-width
       >
         <FaIcon
-          :icon="faCircle"
+          icon="circle"
+          transform="grow-12"
+          :style="{
+            color: 'orange',
+          }"
         />
         <FaIcon
+          icon="play"
+          transform="down-1 right-2"
+          :style="{
+            opacity: 0.5,
+          }"
+        />
+        <FaIcon
+          icon="play"
           class="fa-inverse"
-          :icon="faPlay"
-          transform="shrink-6 right-1"
+          transform="right-2"
         />
       </FaLayers>
-    </figure>
+    </section>
   </main>
 </template>
 
@@ -47,65 +49,68 @@
     faCircle,
   } from '@fortawesome/free-solid-svg-icons';
 
+  import {
+    faInstagram,
+    faLinkedinIn,
+    faSpotify,
+    faTwitter,
+  } from '@fortawesome/free-brands-svg-icons';
+
   library.add(
     faPlay,
     faPause,
     faCircle,
+    faInstagram,
+    faLinkedinIn,
+    faSpotify,
+    faTwitter,
   );
 
   import {
     FontAwesomeIcon as FaIcon,
     FontAwesomeLayers as FaLayers,
+    FontAwesomeLayersText as FaText,
   } from '@fortawesome/vue-fontawesome';
 
-  import {
-    vueVimeoPlayer as VimeoPlayer,
-  } from 'vue-vimeo-player';
-
-  import poster from '@/assets/images/poster.png';
+  import poster from '@/assets/images/poster.jpg';
 
   export default {
     name: 'home',
 
     components: {
-      VimeoPlayer,
       FaIcon,
       FaLayers,
+      FaText,
     },
 
     computed: {
       poster(){
         return poster;
       },
-
-      faPlay(){
-        return faPlay;
-      },
-
-      faPause(){
-        return faPause;
-      },
-
-      faCircle(){
-        return faCircle;
-      },
     },
   }
 </script>
 
-<style lang="less">
-  img.embed-responsive-item {
-    object-fit: cover;
-    object-position: center;
+<style lang="less" scoped>
+  .container {
+    min-width: 100%;
+    min-height: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(12, 1fr);
   }
 
-  .trailer {
-    & .fa-layers {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
+  .content {
+    display: grid;
+    grid-auto-flow: row;
+    grid-auto-rows: auto;
+    justify-content: center;
+    align-items: center;
   }
 
+  .content, .background {
+    grid-column: 1 / span 3;
+    grid-row: 1 / span 12;
+  }
 </style>

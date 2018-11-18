@@ -1,0 +1,30 @@
+.embed-responsive {
+  &-item {
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.background-glass {
+  position: relative;
+
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+
+    @offset: 1;
+    top: percentage(-@offset);
+    left: percentage(-@offset);
+
+    @total: percentage(@offset + 1);
+    width: @total;
+    height: @total;
+
+    background-color: rgba(255, 255, 255, 0.5);
+    filter: blur(5px);
+
+    z-index: -1;
+  }
+}
