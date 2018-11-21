@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
+import Landing from './views/Landing';
+import Home from './views/Home.vue';
 import Watch from './views/Watch';
 import Squad from './views/Squad';
 import Buzz from './views/Buzz';
@@ -13,10 +14,7 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home,
-      meta: {
-        showInNav: true,
-      },
+      component: Landing,
     },
     {
       path: '/watch',

@@ -72,8 +72,6 @@
     FontAwesomeLayersText as FaText,
   } from '@fortawesome/vue-fontawesome';
 
-  import poster from '@/assets/images/poster.jpg';
-
   export default {
     name: 'home',
 

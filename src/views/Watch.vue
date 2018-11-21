@@ -53,11 +53,8 @@
   } from '@fortawesome/vue-fontawesome';
 
   import Player from 'video.js';
-  import css from 'video.js/dist/video-js.css';
 
   import SocialPopup from '@/components/SocialPopup';
-
-  import source from '@/assets/video/video.mp4';
 
   export default {
     name: 'watch',
@@ -127,7 +124,7 @@
           constrols: true,
           sources: [
             {
-              src: source,
+              src: process.env.VUE_APP_TRAILER_URL,
               type: 'video/mp4',
             },
           ],

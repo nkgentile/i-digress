@@ -1,4 +1,6 @@
-import 'bootstrap/scss/bootstrap-reboot.scss';
-import 'bootstrap/scss/utilities/_embed.scss';
+import 'bootstrap/scss/bootstrap.scss';
+
+import 'video.js/dist/video-js.css';
+
 import './globals.less';
 import './transitions.less';

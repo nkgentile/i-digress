@@ -5,7 +5,7 @@
       id="app-content-container"
     />
 
-    <nav
+    <!--<nav
       id="app-navigation-container"
       class="background-glass"
     >
@@ -16,9 +16,9 @@
       >
         {{ route.name }}
       </router-link>
-    </nav>
+    </nav>-->
 
-    <nav
+    <!--<nav
       id="app-social-container"
       class="background-glass"
     >
@@ -27,6 +27,7 @@
         :icon="['fab', link.icon]"
       />
     </nav>
+    -->
 
   </div>
 </template>
