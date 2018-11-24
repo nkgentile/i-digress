@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <AppNavigation/>
 
     <router-view
       id="app-content-container"
@@ -61,10 +62,13 @@ import {
   FontAwesomeLayers as FaLayers,
 } from '@fortawesome/vue-fontawesome';
 
+import AppNavigation from '@/components/AppNavigation';
+
 export default {
   name: 'app',
 
   components: {
+    AppNavigation,
     FaIcon,
     FaLayers,
   },
@@ -111,6 +115,7 @@ export default {
 </script>
 
 <style lang="less">
+/*
   #app {
     display: grid;
     grid-template-rows: auto repeat(11, 1fr);
@@ -161,4 +166,5 @@ export default {
   .router-link-exact-active {
     font-weight: bold;
   }
+  */
 </style>
