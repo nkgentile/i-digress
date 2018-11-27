@@ -1,15 +1,22 @@
 <template>
-    <b-navbar toggleable="md" type="dark" variant="info" fixed="top" :sticky="true">
+    <b-navbar toggleable="md" fixed="top">
 
-        <b-navbar-brand href="#">NavBar</b-navbar-brand>
+        <b-navbar-brand href="#">I Digress</b-navbar-brand>
 
         <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
 
         <b-collapse is-nav id="nav_collapse">
 
             <b-navbar-nav>
-            <b-nav-item href="#">Link</b-nav-item>
-            <b-nav-item href="#" disabled>Disabled</b-nav-item>
+                <b-nav-item
+                    v-for="({
+                        text,
+                    },i) in links"
+                    :key="i"
+                    href="#"
+                >
+                    {{ text }}
+                </b-nav-item>
             </b-navbar-nav>
 
             <!-- Right aligned nav items -->
@@ -31,13 +38,25 @@
     import bCollapse from 'bootstrap-vue/es/components/collapse/collapse';
 
     export default {
-        components: {
-            bNavbar,
-            bNavbarNav,
-            bNavItem,
-            bNavbarToggle,
-            bNavbarBrand,
-            bCollapse,
-        }
+      components: {
+        bNavbar,
+        bNavbarNav,
+        bNavItem,
+        bNavbarToggle,
+        bNavbarBrand,
+        bCollapse,
+      },
+      computed: {
+        links() {
+          return [
+            {
+              text: 'Squad',
+            },
+            {
+              text: 'Credits',
+            },
+          ];
+        },
+      },
     };
 </script>

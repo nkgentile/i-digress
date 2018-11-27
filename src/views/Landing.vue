@@ -1,9 +1,11 @@
 <template>
-  <article class="container">
+  <article>
     <SectionHero/>
     <SectionAbout/>
     <SectionSquad/>
     <SectionBts/>
+    <section-principals/>
+    <section-credits/>
   </article>
 </template>
 
@@ -12,7 +14,8 @@
   import SectionAbout from '@/sections/About';
   import SectionSquad from '@/sections/Squad';
   import SectionBts from '@/sections/BTS';
-
+  import SectionPrincipals from '@/sections/Principals';
+  import SectionCredits from '@/sections/Credits';
 
   export default {
     name: 'home',
@@ -21,6 +24,8 @@
       SectionAbout,
       SectionSquad,
       SectionBts,
+      SectionPrincipals,
+      SectionCredits,
     },
   };
 </script>
