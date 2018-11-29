@@ -7,21 +7,6 @@
 </template>
 
 <script>
-  import bMedia from 'bootstrap-vue/es/components/media/media';
-  import bImg from 'bootstrap-vue/es/components/image/img';
-  import ProfileAvatar from '@/components/ProfileAvatar';
-
-  import principals from '@/assets/json/principals';
-
   export default {
-    components: {
-      bMedia,
-      ProfileAvatar,
-    },
-    computed: {
-      principals() {
-        return principals;
-      },
-    },
   };
 </script>

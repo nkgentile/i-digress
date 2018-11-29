@@ -1,12 +1,12 @@
 <template>
     <div class="border-gradient">
         <b-img
-            class="rounded-circle"
-            blank
-            blank-color="#ccc"
-            width="80"
+            class="fit-cover"
+            width="150"
+            height="150"
             alt="placeholder"
             v-bind="$attrs"
+            rounded="circle"
         />
     </div>
 </template>

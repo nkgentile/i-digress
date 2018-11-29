@@ -1,7 +1,8 @@
 <template>
-  <article>
+  <article class="background-repeat" :style="{
+      backgroundImage: `url(${emoji})`,
+    }">
     <SectionHero/>
-    <SectionAbout/>
     <SectionSquad/>
     <SectionBts/>
     <section-principals/>
@@ -17,6 +18,8 @@
   import SectionPrincipals from '@/sections/Principals';
   import SectionCredits from '@/sections/Credits';
 
+  import emoji from '@/assets/images/svg/emoji.svg';
+
   export default {
     name: 'home',
     components: {
@@ -26,6 +29,9 @@
       SectionBts,
       SectionPrincipals,
       SectionCredits,
+    },
+    computed: {
+      emoji: () => emoji,
     },
   };
 </script>
