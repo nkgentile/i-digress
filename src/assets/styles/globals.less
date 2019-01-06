@@ -100,12 +100,29 @@
   background-repeat: repeat-y;
 }
 
-nav.bg-primary {
-  background: transparent !important;
+nav.navbar {
   font-size: 150% !important;
+  transition: 150ms background-color ease-in;
+}
 
-  & .navbar-brand,
-  & .nav-link {
+.navbar-toggler {
+  border: none;
+}
+
+nav.bg-primary {
+  .navbar-toggler,
+  .navbar-brand,
+  .nav-link {
     color: white !important;
+  }
+
+  background-color: transparent !important;
+}
+
+nav.bg-light {
+  .navbar-toggler,
+  .navbar-brand,
+  .nav-link {
+    color: black !important;
   }
 }

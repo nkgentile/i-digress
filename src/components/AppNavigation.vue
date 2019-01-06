@@ -1,8 +1,10 @@
 <template>
-  <b-navbar toggleable="md" fixed="top" class="tk-kremlin-pro-semi-exp" variant="primary">
+  <b-navbar toggleable="md" fixed="top" class="tk-kremlin-pro-semi-exp" :variant="isNavTransparent ? 'primary' : 'light'">
     <b-navbar-brand href="#" class="font-weight-bold mr-5">i digress</b-navbar-brand>
 
-    <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
+    <b-navbar-toggle target="nav_collapse">
+      <fa-icon icon="bars" />
+    </b-navbar-toggle>
 
     <b-collapse is-nav id="nav_collapse">
       <b-navbar-nav>
@@ -33,11 +35,14 @@ import bNavbarBrand from "bootstrap-vue/es/components/navbar/navbar-brand";
 
 import bNavItem from "bootstrap-vue/es/components/nav/nav-item";
 import bCollapse from "bootstrap-vue/es/components/collapse/collapse";
+
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 
-library.add(faInstagram);
+library.add(faInstagram, faBars);
 
 import { FontAwesomeIcon as FaIcon } from "@fortawesome/vue-fontawesome";
 
@@ -58,8 +63,11 @@ export default {
       },
       {
         text: "BTS"
-      }
-    ]
+      },
+    ],
+    isNavTransparent(){
+      return this.$store.state.isNavTransparent;
+    }
   }
 };
 </script>

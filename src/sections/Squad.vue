@@ -15,11 +15,13 @@
                     :key="i"
                     class="col-lg-3 text-center mx-auto"
                 >
+                    <a :href="url" target="_blank">
                     <profile-avatar class="mb-3" :src="portraits[i]" />
+                    </a>
                     <h3 class="h4 text-dark"><a :href="url" target="_blank">{{ name }}</a></h3>
                     <blockquote class="blockquote text-center">
                         <p class="mb-0">{{ tagline }}</p>
-                        <footer class="blockquote-footer"><cite :title="`@${handle}`">@{{ handle }}</cite></footer>
+                        <footer class="blockquote-footer"><cite :title="`@${handle}`"><a :href="url" class="text-muted" target="_blank">@{{ handle }}</a></cite></footer>
                     </blockquote>
                     <ul class="list-inline mt-4">
                         <li class="list-inline-item">

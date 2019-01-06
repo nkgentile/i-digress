@@ -10,11 +10,11 @@
             url,
           }, i) in principals"
           :key="i"
-          class="card pt-5 mb-3 border-white mx-5 shadow-sm"
+          class="card pt-5 mb-3 border-white shadow"
         >
           <div class="card-body text-center">
               <b-img class="mb-4 fit-cover" :src="portraits[i]" :width="100" :height="100" rounded="circle"/>
-              <h4 class="mb-3"><a :href="url" target="_blank">{{ name }}</a></h4>
+              <h4 class="mb-1"><a :href="url" target="_blank">{{ name }}</a></h4>
               <h5 class="text-muted">{{ role }}</h5>
               <p class="mb-2 text-secondary lead mx-3">{{ blurb }}</p>
           </div>
