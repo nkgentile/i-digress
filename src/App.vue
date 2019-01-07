@@ -1,18 +1,18 @@
 <template>
   <div id="app">
     <AppNavigation/>
-    <router-view id="app-content-container" />
+    <router-view id="app-content-container"/>
   </div>
 </template>
 
 <script>
-  import AppNavigation from '@/components/AppNavigation';
+import AppNavigation from "@/components/AppNavigation";
 
-  export default {
-    name: 'app',
+export default {
+  name: "app",
 
-    components: {
-      AppNavigation,
-    },
-  };
+  components: {
+    AppNavigation
+  }
+};
 </script>

@@ -2,10 +2,10 @@
 
 @gradient-primary: linear-gradient(
   15deg,
-  #93278F 0%,
-  #ED1E79 42%,
-  #F15A24 71%,
-  #F7931E 100%
+  #93278f 0%,
+  #ed1e79 42%,
+  #f15a24 71%,
+  #f7931e 100%
 );
 
 .embed-responsive {
@@ -28,7 +28,7 @@
 
   &::before,
   &::after {
-    content: '';
+    content: "";
 
     position: absolute;
     z-index: -1;
@@ -37,22 +37,21 @@
   }
 
   &::before {
-    top: percentage(-@offset/2);
-    left: percentage(-@offset/2);
+    top: percentage(-@offset / 2);
+    left: percentage(-@offset / 2);
 
     width: percentage(@offset + 1);
     height: percentage(@offset + 1);
 
     background: @gradient-primary;
-
   }
 
   &::after {
-    top: percentage(-@offset/4);
-    left: percentage(-@offset/4);
+    top: percentage(-@offset / 4);
+    left: percentage(-@offset / 4);
 
-    width: percentage(@offset/2 + 1);
-    height: percentage(@offset/2 + 1);
+    width: percentage(@offset / 2 + 1);
+    height: percentage(@offset / 2 + 1);
 
     background-color: white;
   }
@@ -66,7 +65,7 @@
   position: relative;
 
   &::after {
-    content: '';
+    content: "";
 
     position: absolute;
 
@@ -102,7 +101,7 @@
 
 nav.navbar {
   font-size: 150% !important;
-  transition: 150ms background-color ease-in;
+  transition: 100ms background-color ease-in;
 }
 
 .navbar-toggler {
@@ -124,5 +123,8 @@ nav.bg-light {
   .navbar-brand,
   .nav-link {
     color: black !important;
+    &.active {
+      color: #93278f !important;
+    }
   }
 }

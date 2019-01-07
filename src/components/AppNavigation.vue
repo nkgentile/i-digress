@@ -1,19 +1,27 @@
 <template>
-  <b-navbar toggleable="md" fixed="top" class="tk-kremlin-pro-semi-exp" :variant="isNavTransparent ? 'primary' : 'light'">
-    <b-navbar-brand href="#" class="font-weight-bold mr-5">i digress</b-navbar-brand>
+  <b-navbar
+    toggleable="md"
+    fixed="top"
+    class="tk-kremlin-pro-semi-exp"
+    :variant="isNavTransparent ? 'primary' : 'light'"
+    v-b-scrollspy="{offset: 100}"
+  >
+    <b-navbar-brand class="font-weight-bold mr-5" @click="scrollToElement('hero', $event)">i digress</b-navbar-brand>
 
     <b-navbar-toggle target="nav_collapse">
-      <fa-icon icon="bars" />
+      <fa-icon icon="bars"/>
     </b-navbar-toggle>
 
     <b-collapse is-nav id="nav_collapse">
       <b-navbar-nav>
         <b-nav-item
           v-for="({
-                        text,
-                    },i) in links"
+            text,
+            target
+          },i) in links"
           :key="i"
-          href="#"
+          :href="`#${ target }`"
+          @click="scrollToElement(target, $event)"
           class="mr-3"
         >{{ text }}</b-nav-item>
       </b-navbar-nav>
@@ -39,7 +47,6 @@ import bCollapse from "bootstrap-vue/es/components/collapse/collapse";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
-
 import { library } from "@fortawesome/fontawesome-svg-core";
 
 library.add(faInstagram, faBars);
@@ -59,14 +66,26 @@ export default {
   computed: {
     links: () => [
       {
-        text: "squad"
+        text: "squad",
+        target: "squad"
       },
       {
-        text: "BTS"
-      },
+        text: "BTS",
+        target: "bts"
+      }
     ],
-    isNavTransparent(){
+    isNavTransparent() {
       return this.$store.state.isNavTransparent;
+    }
+  },
+  methods: {
+    scrollToElement(id, event) {
+      event.preventDefault();
+      const element = document.getElementById(id);
+      this.$scrollTo(element, 150, {
+        easing: "ease-in-out",
+        offset: -50
+      });
     }
   }
 };

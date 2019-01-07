@@ -14,27 +14,27 @@
 </template>
 
 <script>
-  import SectionHero from '@/sections/Hero';
-  import SectionAbout from '@/sections/About';
-  import SectionSquad from '@/sections/Squad';
-  import SectionBts from '@/sections/BTS';
-  import SectionPrincipals from '@/sections/Principals';
-  import SectionCredits from '@/sections/Credits';
+import SectionHero from "@/sections/Hero";
+import SectionAbout from "@/sections/About";
+import SectionSquad from "@/sections/Squad";
+import SectionBts from "@/sections/BTS";
+import SectionPrincipals from "@/sections/Principals";
+import SectionCredits from "@/sections/Credits";
 
-  import emoji from '@/assets/images/svg/emoji.svg';
+import emoji from "@/assets/images/svg/emoji.svg";
 
-  export default {
-    name: 'home',
-    components: {
-      SectionHero,
-      SectionAbout,
-      SectionSquad,
-      SectionBts,
-      SectionPrincipals,
-      SectionCredits,
-    },
-    computed: {
-      emoji: () => emoji,
-    },
-  };
+export default {
+  name: "home",
+  components: {
+    SectionHero,
+    SectionAbout,
+    SectionSquad,
+    SectionBts,
+    SectionPrincipals,
+    SectionCredits
+  },
+  computed: {
+    emoji: () => emoji
+  }
+};
 </script>
