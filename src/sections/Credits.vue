@@ -1,10 +1,8 @@
 <template>
-  <section>
+  <section id="credits">
     <main class="container">
       <section class="pb-3">
-        <h1 class="text-center tk-kremlin-pro-semi-exp mb-5">
-          Cast
-        </h1>
+        <h1 class="text-center tk-kremlin-pro-semi-exp mb-5">Cast</h1>
         <ul class="list-unstyled row">
           <li
             v-for="({
@@ -23,9 +21,7 @@
         </ul>
       </section>
       <section>
-        <h1 class="text-center tk-kremlin-pro-semi-exp mb-5">
-          Crew
-        </h1>
+        <h1 class="text-center tk-kremlin-pro-semi-exp mb-5">Crew</h1>
         <ul class="list-unstyled row">
           <li
             v-for="({

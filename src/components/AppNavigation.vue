@@ -72,6 +72,10 @@ export default {
       {
         text: "BTS",
         target: "bts"
+      },
+      {
+        text: "cast & crew",
+        target: "credits"
       }
     ],
     isNavTransparent() {
@@ -84,7 +88,7 @@ export default {
       const element = document.getElementById(id);
       this.$scrollTo(element, 150, {
         easing: "ease-in-out",
-        offset: -50
+        offset: -80
       });
     }
   }

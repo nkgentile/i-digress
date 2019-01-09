@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import poster from "@/assets/images/jpg/poster.jpg";
+import poster from "@/assets/images/jpg/bts.jpg";
 
 export default {
   computed: {

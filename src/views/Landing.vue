@@ -8,7 +8,7 @@
     <section-principals/>
     <section-credits/>
     <footer class="text-center bg-dark px-3 py-5">
-      <a href="#" class="btn btn-primary btn-rounded">Contact Us</a>
+      <a href="mailto:idigressllc@gmail.com" class="btn btn-primary btn-rounded">Contact Us</a>
     </footer>
   </article>
 </template>
