@@ -6,7 +6,7 @@
       </header>
       <figure class="embed-responsive embed-responsive-16by9">
         <video class="embed-responsive-item" :poster="poster" controls preload="none">
-          <source :src="video" type="video/mp4">
+          <source :src="video.src" :type="video.type">
         </video>
       </figure>
     </div>
@@ -14,12 +14,13 @@
 </template>
 
 <script>
+import { bts as video } from "@/assets/json/videos.json";
 import poster from "@/assets/images/jpg/bts.jpg";
 
 export default {
-  computed: {
-    video: () => process.env.VUE_APP_BTS_URL,
-    poster: () => poster
-  }
+  data: () => ({
+    video,
+    poster
+  })
 };
 </script>

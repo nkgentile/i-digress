@@ -1,221 +1,96 @@
 <template>
-  <article>
-      <figure class="embed-responsive embed-responsive-16by9">
-        <video
-          class="embed-responsive-item"
-          ref="video"
-        />
-        <SocialPopup
-          v-if="currentPopup"
-          class="social-popup"
-          :to="`/watch/popup/${currentPopup.id}`"
-        >
-            <div v-html="currentPopup.content" />
-            <FaIcon
-              slot="icon"
-              :icon="['fab', currentPopup.icon]"
-              size="4x"
-            />
-        </SocialPopup>
-        <span class="timecode">
-          {{ currentTime }}
-        </span>
-      </figure>
-    <keep-alive>
-      <router-view
-        name="modal"
-        class="app-modal-container"
-      />
-    </keep-alive>
+  <article
+    class="container-fluid position-fixed fixed-top w-100 h-100"
+    style="background-color: black;"
+  >
+    <div class="row align-items-center h-100">
+      <div class="embed-responsive embed-responsive-16by9">
+        <video class="video-js embed-responsive-item" ref="player"/>
+      </div>
+      <a
+        v-if="activeCue"
+        :href="activeCue.text"
+        class="fixed-top w-100 h-100"
+        target="_blank"
+        @click="onOverlayClick"
+      ></a>
+      <router-link to="/" class="fixed-top text-white p-1 text-right">
+        <fa-icon icon="times-circle" size="2x"/>
+      </router-link>
+    </div>
   </article>
 </template>
 
 <script>
-  import {
-    library,
-  } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon as FaIcon } from "@fortawesome/vue-fontawesome";
 
-  import {
-    faTimes,
-  } from '@fortawesome/free-solid-svg-icons';
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
+library.add(faTimesCircle);
 
-  import {
-    faSpotify,
-  } from '@fortawesome/free-brands-svg-icons';
+import { trailer as video } from "@/assets/json/videos.json";
 
-  library.add(
-    faTimes,
-    faSpotify
-  );
+import Player from "video.js";
 
-  import {
-    FontAwesomeIcon as FaIcon,
-  } from '@fortawesome/vue-fontawesome';
+export default {
+  name: "watch",
+  components: {
+    FaIcon
+  },
+  data() {
+    return {
+      video,
+      player: null,
+      activeCue: null
+    };
+  },
+  methods: {
+    initializePlayer() {
+      const { player } = this.$refs;
+      const { src, type, poster } = this.video;
 
-  import Player from 'video.js';
-
-  import SocialPopup from '@/components/SocialPopup';
-
-  export default {
-    name: 'watch',
-    components: {
-      FaIcon,
-      SocialPopup,
-    },
-    props: {
-      id: {
-        type: Number,
-      },
-    },
-    data(){
-      return {
-        activeCueId: null,
-        cuesById: {
-          1: {
-            id: 1,
-            type: 'spotify',
-            icon: 'spotify',
-            content: '<h1>Test</h1>',
-          },
-          2: {
-            id: 2,
-            type: 'spotify',
-            icon: 'spotify',
-          },
-          3: {
-            id: 3,
-            type: 'spotify',
-            icon: 'spotify',
-          },
-          4: {
-            id: 4,
-            type: 'spotify',
-            icon: 'spotify',
-          },
-          5: {
-            id: 5,
-            type: 'spotify',
-            icon: 'spotify',
-          },
-          6: {
-            id: 6,
-            type: 'spotify',
-            icon: 'spotify',
-          },
-          7: {
-            id: 7,
-            type: 'spotify',
-            icon: 'spotify',
-          },
-        },
-        currentPopup: null,
-        currentTime: null,
-        didEnter: false,
-        player: null,
-      };
-    },
-    methods: {
-      initializePlayer(){
-        const { video } = this.$refs;
-        const options = {
-          autoplay: true,
-          preload: 'auto',
-          muted: true,
-          constrols: true,
-          sources: [
-            {
-              src: process.env.VUE_APP_TRAILER_URL,
-              type: 'video/mp4',
-            },
-          ],
-        };
-
-        const player = Player(
-          video,
-          options,
-          this.onReady
-        );
-        this.player = player;
-      },
-
-      onReady(){
-        this.player.addRemoteTextTrack({
-          src: `${process.env.BASE_URL}cues.vtt`,
-          kind: 'metadata',
-          mode: 'hidden',
-          default: true,
-          label: 'social',
-        }, false);
-
-        this.player.on('timeupdate', () => 
-          this.currentTime = this.player.currentTime()
-        );
-
-        const cueTrack = this.player.textTracks()[0];
-        cueTrack.addEventListener(
-          'cuechange',
-          () => {
-            const { activeCues } = cueTrack;
-            if(!activeCues.length) return;
-
-            const { id } = activeCues[0];
-            this.dispatchAction(id);
-            setTimeout(() => this.currentPopup = null, 3000);
+      const options = {
+        preload: "auto",
+        controls: true,
+        autoplay: true,
+        poster,
+        sources: [
+          {
+            src,
+            type
           }
-        );
-      },
-      
-      dispatchAction(id){
-        const { [id]: currentCue } = this.cuesById;
-        this.currentPopup = currentCue;
-      },
+        ]
+      };
+
+      this.player = Player(player, options, this.onReady);
     },
-    mounted(){
-      this.initializePlayer();
+
+    onReady() {
+      this.player.addRemoteTextTrack(
+        {
+          src: "cues.vtt",
+          kind: "metadata",
+          mode: "hidden",
+          default: true,
+          label: "social"
+        },
+        false
+      );
+
+      const cueTrack = this.player.textTracks()[0];
+      cueTrack.addEventListener("cuechange", () => {
+        const { activeCues } = cueTrack;
+        this.activeCue = activeCues.length ? activeCues[0] : null;
+      });
     },
-  };
+
+    onOverlayClick() {
+      this.player.pause();
+      this.activeCue = null;
+    }
+  },
+  mounted() {
+    this.initializePlayer();
+  }
+};
 </script>
-
-<styles lang="less" scoped>
-  .close {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 9999;
-    margin: 0.66rem;
-  }
-
-  .embed-responsive-fullscreen {
-    width: 100%;
-    height: 100%;
-  }
-
-  .social-popup {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    margin: 1rem;
-    z-index: 99;
-  }
-
-  .timecode {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    color: white;
-  }
-
-  .slideout-frame {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    padding-top: 3rem;
-  }
-
-  .no-events {
-    pointer-events: none;
-  }
-
-</styles>

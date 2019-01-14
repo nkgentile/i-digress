@@ -1,0 +1,15 @@
+{
+  "reel": {
+    "src": "videos/reel.mp4",
+    "type": "video/mp4",
+    "poster": "images/reel-poster.jpg"
+  },
+  "bts": {
+    "src": "videos/bts.mp4",
+    "type": "video/mp4"
+  },
+  "trailer": {
+    "src": "videos/trailer-720.mp4",
+    "type": "video/mp4"
+  }
+}

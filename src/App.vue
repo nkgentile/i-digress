@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <AppNavigation/>
+    <AppNavigation v-if="!hideNavigation"/>
     <router-view id="app-content-container"/>
   </div>
 </template>
@@ -13,6 +13,13 @@ export default {
 
   components: {
     AppNavigation
+  },
+
+  computed: {
+    hideNavigation() {
+      const { meta } = this.$route;
+      return meta.hideNavigation;
+    }
   }
 };
 </script>

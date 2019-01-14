@@ -6,7 +6,9 @@
     :variant="isNavTransparent ? 'primary' : 'light'"
     v-b-scrollspy="{offset: 100}"
   >
-    <b-navbar-brand class="font-weight-bold mr-5" @click="scrollToElement('hero', $event)">i digress</b-navbar-brand>
+    <b-navbar-brand class="font-weight-bold mr-5" @click="scrollToElement('hero', $event)">
+      <img :src="logo" height="52">
+    </b-navbar-brand>
 
     <b-navbar-toggle target="nav_collapse">
       <fa-icon icon="bars"/>
@@ -53,6 +55,8 @@ library.add(faInstagram, faBars);
 
 import { FontAwesomeIcon as FaIcon } from "@fortawesome/vue-fontawesome";
 
+import logo from "@/assets/images/svg/logo.svg";
+
 export default {
   components: {
     bNavbar,
@@ -63,8 +67,9 @@ export default {
     bCollapse,
     FaIcon
   },
-  computed: {
-    links: () => [
+  data: () => ({
+    logo,
+    links: [
       {
         text: "squad",
         target: "squad"
@@ -77,7 +82,9 @@ export default {
         text: "cast & crew",
         target: "credits"
       }
-    ],
+    ]
+  }),
+  computed: {
     isNavTransparent() {
       return this.$store.state.isNavTransparent;
     }

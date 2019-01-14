@@ -1,12 +1,15 @@
 module.exports = {
-  baseUrl: './',
-  outputDir: 'www',
+  outputDir: "www",
   css: {
     loaderOptions: {
       sass: {
         test: /\.scss$/,
-        loader: 'sass-loader',
+        loader: "sass-loader"
       },
-    },
-  },
+      stylus: {
+        test: /\.styl$/,
+        loader: "stylus-loader"
+      }
+    }
+  }
 };

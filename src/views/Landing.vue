@@ -3,6 +3,7 @@
       backgroundImage: `url(${emoji})`,
     }">
     <SectionHero/>
+    <SectionAbout/>
     <SectionSquad/>
     <SectionBts/>
     <section-principals/>
@@ -33,8 +34,8 @@ export default {
     SectionPrincipals,
     SectionCredits
   },
-  computed: {
-    emoji: () => emoji
-  }
+  data: () => ({
+    emoji
+  })
 };
 </script>
