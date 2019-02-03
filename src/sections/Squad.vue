@@ -1,7 +1,7 @@
 <template>
   <section id="squad" class="container py-5">
     <header>
-      <h1 class="display-1 text-center tk-kremlin-pro-semi-exp">Meet the Squad</h1>
+      <h1 class="font-weight-bold text-center tk-kremlin-pro-semi-exp">Meet the Squad</h1>
     </header>
     <main class="py-5">
       <ul class="row list-unstyled">

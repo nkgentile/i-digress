@@ -2,7 +2,7 @@
   <section id="bts" class="background-gradient mb-5">
     <div class="container" style="transform: translateY(2rem)">
       <header class="row">
-        <h1 class="display-1 mx-auto p-3 text-white tk-kremlin-pro-semi-exp">BTS</h1>
+        <h1 class="font-weight-bold mx-auto p-3 text-white tk-kremlin-pro-semi-exp">BTS</h1>
       </header>
       <figure class="embed-responsive embed-responsive-16by9">
         <video class="embed-responsive-item" :poster="poster" controls preload="none">

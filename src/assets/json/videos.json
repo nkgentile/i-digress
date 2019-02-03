@@ -10,6 +10,7 @@
   },
   "trailer": {
     "src": "videos/trailer-720.mp4",
-    "type": "video/mp4"
+    "type": "video/mp4",
+    "poster": "images/reel-poster.jpg"
   }
 }

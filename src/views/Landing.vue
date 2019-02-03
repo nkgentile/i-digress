@@ -3,7 +3,6 @@
       backgroundImage: `url(${emoji})`,
     }">
     <SectionHero/>
-    <SectionAbout/>
     <SectionSquad/>
     <SectionBts/>
     <section-principals/>

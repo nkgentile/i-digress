@@ -5,7 +5,7 @@
   >
     <div class="row align-items-center h-100">
       <div class="embed-responsive embed-responsive-16by9">
-        <video class="video-js embed-responsive-item" ref="player"/>
+        <video class="video-js embed-responsive-item" ref="player" playsinline webkit-playsinline/>
       </div>
       <a
         v-if="activeCue"
@@ -53,6 +53,10 @@ export default {
         preload: "auto",
         controls: true,
         autoplay: true,
+        nativeControlsForTouch: false,
+        userActions: {
+          doubleClick: false
+        },
         poster,
         sources: [
           {

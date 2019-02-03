@@ -16,11 +16,14 @@
         <div class="container">
           <div class="row justify-content-center">
             <b-button to="/watch" variant="gradient" class="p-3">
-              <span class="display-4">
+              <h1 class="m-0">
                 <fa-icon icon="play-circle"/>
-                <span class="ml-2 tk-kremlin-pro-semi-exp">Watch Trailer</span>
-              </span>
+                <span class="ml-2 tk-kremlin-pro-semi-exp">Watch Pilot</span>
+              </h1>
             </b-button>
+            <h4
+              class="font-weight-light text-white text-center mt-3"
+            >I Digress follows 27 year-old Sofia and her sassy squad as they text, swipe and post their way through an “adulthood” that feels as blurred and inundated as their screens.</h4>
           </div>
         </div>
       </figcaption>
