@@ -8,8 +8,6 @@ import "@/assets/styles";
 
 Vue.config.productionTip = false;
 
-console.log(process.env.BASE_URL);
-
 new Vue({
   router,
   store,

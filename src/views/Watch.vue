@@ -5,12 +5,14 @@
   >
     <div class="row align-items-center h-100">
       <div class="embed-responsive embed-responsive-16by9">
-        <video class="video-js embed-responsive-item" ref="player" playsinline webkit-playsinline/>
+        <video class="video-js embed-responsive-item" ref="player" playsinline webkit-playsinline>
+          <track kind="metadata" src="cues.vtt" srclang="en" label="social" default mode="hidden">
+        </video>
       </div>
       <a
         v-if="activeCue"
         :href="activeCue.text"
-        class="fixed-top w-100 h-100"
+        class="fixed-top w-100 h-100 video-overlay"
         target="_blank"
         @click="onOverlayClick"
       ></a>
@@ -53,10 +55,6 @@ export default {
         preload: "auto",
         controls: true,
         autoplay: true,
-        nativeControlsForTouch: false,
-        userActions: {
-          doubleClick: false
-        },
         poster,
         sources: [
           {
@@ -70,17 +68,6 @@ export default {
     },
 
     onReady() {
-      this.player.addRemoteTextTrack(
-        {
-          src: "cues.vtt",
-          kind: "metadata",
-          mode: "hidden",
-          default: true,
-          label: "social"
-        },
-        false
-      );
-
       const cueTrack = this.player.textTracks()[0];
       cueTrack.addEventListener("cuechange", () => {
         const { activeCues } = cueTrack;
@@ -98,3 +85,12 @@ export default {
   }
 };
 </script>
+
+<style>
+.video-overlay {
+  z-index: 99999;
+}
+.vjs-fullscreen-control {
+  display: none !important;
+}
+</style>
