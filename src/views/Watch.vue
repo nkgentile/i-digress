@@ -67,8 +67,8 @@ export default {
       this.player = Player(player, options, this.onReady);
     },
 
-    onReady() {
-      const cueTrack = this.player.textTracks()[0];
+    async onReady() {
+      const cueTrack = (await this.player.textTracks())[0];
       cueTrack.addEventListener("cuechange", () => {
         const { activeCues } = cueTrack;
         this.activeCue = activeCues.length ? activeCues[0] : null;
